@@ -1,0 +1,7 @@
+local utils = require("utils")
+utils.nnoremap("[b", "<Cmd>BufferLineCyclePrev<CR>")
+utils.nnoremap("]b", "<Cmd>BufferLineCycleNext<CR>")
+utils.nnoremap("<Leader>[b", "<Cmd>BufferLineMovePrev<CR>")
+utils.nnoremap("<Leader>]b", "<Cmd>BufferLineMoveNext<CR>")
+utils.nnoremap("<Leader>dbl", "<Cmd>BufferLineCloseLeft<CR>")
+utils.nnoremap("<Leader>dbr", "<Cmd>BufferLineCloseRight<CR>")
