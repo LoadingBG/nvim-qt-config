@@ -61,6 +61,7 @@ return require("packer").startup {
          get_spec("kyazdani42/nvim-web-devicons", { as = "icons" }), -- Additional icons
          get_spec("nvim-lua/plenary.nvim", { as = "plenary" }), -- Additional functionality
          get_spec("tami5/sqlite.lua", { as = "sqlite" }), -- SQLite support
+         get_spec("nvim-lua/popup.nvim", { as = "popup" }), -- Popup API implementation
          --- Miscellaneous ---
          get_spec("antoinemadec/FixCursorHold.nvim"), -- Fix for CursorHold and CursorHoldI events
 
@@ -91,10 +92,12 @@ return require("packer").startup {
          get_spec("ms-jpq/coq.artifacts", { branch = "artifacts" }), -- Snippets
          get_spec("ms-jpq/coq.thirdparty", { branch = "3p" }), -- Third-party add-ons
          --- Fuzzy finding ---
-         get_spec("nvim-telescope/telescope.nvim", { requires = "plenary" }), -- Fuzzy finder
+         get_spec("nvim-telescope/telescope.nvim", { as = "telescope", requires = "plenary" }), -- Fuzzy finder
          get_spec("nvim-telescope/telescope-fzy-native.nvim"), -- Native FZY sorter
          get_spec("nvim-telescope/telescope-github.nvim", { requires = "plenary" }), -- Github integration
          get_spec("nvim-telescope/telescope-file-browser.nvim", { requires = "plenary" }), -- File browser
+         get_spec("sudormrfbin/cheatsheet.nvim", { requires = { "telescope", "popup", "plenary" } }), -- Telescope cheatsheet
+         get_spec("pwntester/octo.nvim", { cmd = "Octo", requires = { "plenary", "icons", "telescope" } }), -- GitHub browser
          --get_spec("nvim-telescope/telescope-arecibo.nvim", { rocks = { "openssl", "lua-http-parser" } }), -- Web searcher
          --- Zen mode ---
          -- TODO: make lazy
