@@ -104,7 +104,6 @@ return require("packer").startup {
          get_spec("nvim-telescope/telescope-github.nvim", { requires = "plenary" }), -- Github integration
          get_spec("nvim-telescope/telescope-file-browser.nvim", { requires = "plenary" }), -- File browser
          get_spec("sudormrfbin/cheatsheet.nvim", { requires = { "telescope", "popup", "plenary" } }), -- Telescope cheatsheet
-         get_spec("pwntester/octo.nvim", { cmd = "Octo", requires = { "plenary", "icons", "telescope" } }), -- GitHub browser
          --get_spec("nvim-telescope/telescope-arecibo.nvim", { rocks = { "openssl", "lua-http-parser" } }), -- Web searcher
          --- Zen mode ---
          -- TODO: make lazy
