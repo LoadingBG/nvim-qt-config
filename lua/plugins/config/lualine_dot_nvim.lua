@@ -54,17 +54,6 @@ local function get_mode()
    return string.format("%%#LualineModeColor%s#%s", props.name, props.display)
 end
 
---local function plural_count(count, singular, plural)
---   return count == 1 and "1 " .. singular or count .. " " .. plural
---end
---
---local function text_info()
---   local components = {}
---   table.insert(components, plural_count(vim.fn.line("$"), "line", "lines")) -- Line count
---   table.insert(components, plural_count(vim.fn.wordcount().words, "word", "words")) -- Word count
---   return "%#LualineModeColor" .. mode_config[vim.fn.mode()].name .. "#" .. table.concat(components, " " .. lualine.get_config().options.component_separators.right .. " ")
---end
-
 local function named_definition(symbol, name_group)
    return function(node)
       for _, child in ipairs(ts_utils.get_named_children(node)) do
@@ -212,14 +201,6 @@ lualine.setup {
       lualine_y = { "branch", "diff", "encoding", "fileformat", "filetype" },
       lualine_z = { "location", "progress" },
    },
-   --sections = {
-   --   lualine_a = { get_mode },
-   --   lualine_b = { "branch", "diff", "encoding", "fileformat", "filetype" },
-   --   lualine_c = { { "filename", symbols = { modified = " +", readonly = " " } } },
-   --   lualine_x = { "diagnostics" },
-   --   lualine_y = { "location", "progress" },
-   --   lualine_z = { text_info },
-   --},
    options = {
       theme = dofile(vim.fn.stdpath("data") .. "/site/pack/packer/opt/lualine.nvim/lua/lualine/themes/onedark.lua")
    },
