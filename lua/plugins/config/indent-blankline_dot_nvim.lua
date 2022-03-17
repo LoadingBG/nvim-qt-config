@@ -11,6 +11,6 @@ require("indent_blankline").setup {
    max_indent_increase = 1,
    show_trailing_blankline_indent = false,
 
-   filetype_exclude = { "help", "terminal", "packer", "NvimTree", "lsp-install", "checkhealth" },
+   filetype_exclude = { "help", "terminal", "packer", "NvimTree", "lsp-installer", "lspinfo", "checkhealth" },
    buftype_exclude = { "terminal" },
 }

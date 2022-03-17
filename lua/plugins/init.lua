@@ -92,6 +92,9 @@ return require("packer").startup {
          get_spec("hrsh7th/cmp-buffer"), -- Buffer completion source
          get_spec("hrsh7th/cmp-path"), -- Path completion source
          get_spec("hrsh7th/cmp-cmdline"), -- Commandline completion source
+         get_spec("hrsh7th/cmp-nvim-lua"), -- Neovim Lua API completion source
+         get_spec("ray-x/cmp-treesitter"), -- Treesitter completion source
+         get_spec("hrsh7th/cmp-nvim-lsp-signature-help"), -- Function signatures completion source
          get_spec("hrsh7th/nvim-cmp"), -- Autocompletion engine
          get_spec("L3MON4D3/LuaSnip"), -- Snippets engine
          get_spec("saadparwaiz1/cmp_luasnip"), -- Snippets integration

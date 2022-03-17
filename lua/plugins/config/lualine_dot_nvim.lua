@@ -108,6 +108,27 @@ local function avoid_nested(parent_type, text)
    end
 end
 
+local function typed_definition(symbol, type_node_type)
+   local function get_type(node)
+      if node:type() == type_node_type then
+         return ts_utils.get_node_text(node)[1]
+      end
+      for _, child_node in ipairs(ts_utils.get_named_children(node)) do
+         local text = get_type(child_node)
+         if text then
+            return text
+         end
+      end
+   end
+   return function(node)
+      local text = get_type(node)
+      if text then
+         return symbol .. " (" .. text .. ")"
+      end
+      return symbol
+   end
+end
+
 local function avoid_being_parent_of(children_types, root_type, text)
    return function(node)
       local node_under_cursor = ts_utils.get_node_at_cursor(0)
@@ -131,7 +152,7 @@ local context_maps = {
       -- TODO: change icon and display type
       object_creation_expression = java_anonymous_class("ﴯ"),
 
-      method_declaration = named_definition(""),
+      method_declaration = named_definition("", "identifier"),
       lambda_expression = "λ lambda",
 
       while_statement = " while",
@@ -141,13 +162,11 @@ local context_maps = {
       if_statement = avoid_nested("if_statement", " if"),
       switch_expression = " switch",
       try_statement = avoid_being_parent_of({ "catch_clause", "finally_clause" }, "program", " try"),
-      catch_clause = " catch",
+      catch_clause = typed_definition(" catch", "catch_type"),
       finally_clause = " finally",
    },
    lua = {
-      ["function"] = named_definition("", "identifier"),
-      -- TODO: different symbol for local function
-      local_function = named_definition("", "identifier"),
+      function_declaration = named_definition("", "identifier"),
       function_definition = "λ lambda",
 
       while_statement = " while",
