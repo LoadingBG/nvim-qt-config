@@ -15,14 +15,14 @@ local mode_config = {
    ["s"]      = { name = "s",     display = "SELECT",                             bg = "#56b6c2" },
    ["S"]      = { name = "S",     display = "SELECT LINE",                        bg = "#56b6c2" },
    ["\x13"]   = { name = "c_s",   display = "SELECT BLOCK",                       bg = "#56b6c2" },
-   ["vs"]     = { name = "vs",    display = "SELECT  VISUAL COMMAND",            bg = "#56b6c2" },
-   ["Vs"]     = { name = "Vs",    display = "SELECT LINE  VISUAL COMMAND",       bg = "#56b6c2" },
-   ["\x13s"]  = { name = "c_ss",  display = "SELECT BLOCK  VISUAL COMMAND",      bg = "#56b6c2" },
+   ["vs"]     = { name = "vs",    display = "SELECT  VISUAL COMMAND",            bg = "#c678dd" },
+   ["Vs"]     = { name = "Vs",    display = "SELECT LINE  VISUAL COMMAND",       bg = "#c678dd" },
+   ["\x13s"]  = { name = "c_ss",  display = "SELECT BLOCK  VISUAL COMMAND",      bg = "#c678dd" },
 
    ["i"]      = { name = "i",     display = "INSERT",                             bg = "#61afef" },
    ["ic"]     = { name = "ic",    display = "INSERT  COMPLETION",                bg = "#61afef" },
    ["ix"]     = { name = "ix",    display = "INSERT  CTRL-X",                    bg = "#61afef" },
-   ["niI"]    = { name = "niI",   display = "INSERT  NORMAL COMMAND",            bg = "#61afef" },
+   ["niI"]    = { name = "niI",   display = "INSERT  NORMAL COMMAND",            bg = "#98c379" },
 
    ["R"]      = { name = "R",     display = "REPLACE",                            bg = "#e06c75" },
    ["Rc"]     = { name = "Rc",    display = "REPLACE  COMPLETION",               bg = "#e06c75" },
