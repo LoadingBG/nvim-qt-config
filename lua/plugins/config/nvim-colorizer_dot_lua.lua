@@ -1,5 +1,5 @@
 require("colorizer").setup {
    "*",
-   "^packer",
+   "!packer",
    css = { css = true },
 }

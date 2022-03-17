@@ -1,7 +1,9 @@
 require("nvim-treesitter.configs").setup {
    ensure_installed = { -- Ensure the following grammars are installed
-      --"html", -- For arecibo
+      "css",
+      "html",
       "java",
+      "javascript",
       "lua",
       "query", -- TS Playground
    },

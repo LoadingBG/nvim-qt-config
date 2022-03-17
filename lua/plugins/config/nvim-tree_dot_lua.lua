@@ -1,7 +1,6 @@
 -- see `:h nvim-tree-options`
 vim.g.nvim_tree_highlight_opened_files = 2
 vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_add_trailing = 1
 vim.g.nvim_tree_group_empty = 1
@@ -26,5 +25,10 @@ require("nvim-tree").setup {
    },
    git = {
       enable = true,
+   },
+   actions = {
+      open_file = {
+         quit_on_open = true,
+      },
    },
 }

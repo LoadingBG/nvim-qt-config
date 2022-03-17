@@ -79,9 +79,16 @@ local server_settings = {
    },
 }
 
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 installer.on_server_ready(function(server)
-   server:setup(require("coq").lsp_ensure_capabilities {
+   server:setup {
+      capabilities = capabilities,
       on_attach = on_attach,
-      settings = server_settings[server.name],
-   })
+      settings = server_settings[server.name]
+   }
+   --server:setup(require("coq").lsp_ensure_capabilities {
+   --   on_attach = on_attach,
+   --   settings = server_settings[server.name],
+   --})
 end)

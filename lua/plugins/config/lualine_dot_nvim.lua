@@ -78,6 +78,15 @@ end
 -- TODO: improve this function
 local function java_anonymous_class(symbol)
    return function(node)
+      local is_anonymous
+      for _, child in ipairs(ts_utils.get_named_children(node)) do
+         if child:type() == "class_body" then
+            is_anonymous = true
+         end
+      end
+      if not is_anonymous then
+         return
+      end
       for _, child in ipairs(ts_utils.get_named_children(node)) do
          if child:type() == "type_identifier" then
             return symbol .. " " .. ts_utils.get_node_text(child)[1]
@@ -87,15 +96,27 @@ local function java_anonymous_class(symbol)
                   return symbol .. " " .. ts_utils.get_node_text(grandchild)[1]
                end
             end
+         --elseif child:type()
          end
       end
    end
 end
 
-local function if_avoid_nested(text)
+local function avoid_nested(parent_type, text)
    return function(node)
-      print(node)
-      return node:parent():type() ~= "if_statement" and text
+      return node:parent():type() ~= parent_type and text
+   end
+end
+
+local function avoid_being_parent_of(children_types, root_type, text)
+   return function(node)
+      local node_under_cursor = ts_utils.get_node_at_cursor(0)
+      while node_under_cursor:type() ~= root_type and (not vim.tbl_contains(children_types, node_under_cursor:type()) or node_under_cursor:parent() ~= node) do
+         node_under_cursor = node_under_cursor:parent()
+      end
+      if node_under_cursor:type() == root_type then
+         return text
+      end
    end
 end
 
@@ -106,6 +127,7 @@ local context_maps = {
       enum_declaraion = named_definition("", "identifier"),
       -- TODO: record support when TS supports it
       -- TODO: parse modifiers
+      constructor_declaration = named_definition("", "identifier"),
       -- TODO: change icon and display type
       object_creation_expression = java_anonymous_class("ﴯ"),
 
@@ -116,8 +138,11 @@ local context_maps = {
       do_statement = " do-while",
       enhanced_for_statement = " enhanced for",
       for_statement = " for",
-      if_statement = if_avoid_nested(" if"),
+      if_statement = avoid_nested("if_statement", " if"),
       switch_expression = " switch",
+      try_statement = avoid_being_parent_of({ "catch_clause", "finally_clause" }, "program", " try"),
+      catch_clause = " catch",
+      finally_clause = " finally",
    },
    lua = {
       ["function"] = named_definition("", "identifier"),

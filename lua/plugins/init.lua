@@ -88,9 +88,13 @@ return require("packer").startup {
          get_spec("folke/trouble.nvim", { requires = "icons" }), -- Diagnostics location list
          --get_spec("glepnir/lspsaga.nvim"), -- Code actions
          --- Autocompletion ---
-         get_spec("ms-jpq/coq_nvim", { branch = "coq", run = ":COQdeps" }), -- Autocompletion engine
-         get_spec("ms-jpq/coq.artifacts", { branch = "artifacts" }), -- Snippets
-         get_spec("ms-jpq/coq.thirdparty", { branch = "3p" }), -- Third-party add-ons
+         get_spec("hrsh7th/cmp-nvim-lsp"), -- Neovim LSP completion source
+         get_spec("hrsh7th/cmp-buffer"), -- Buffer completion source
+         get_spec("hrsh7th/cmp-path"), -- Path completion source
+         get_spec("hrsh7th/cmp-cmdline"), -- Commandline completion source
+         get_spec("hrsh7th/nvim-cmp"), -- Autocompletion engine
+         get_spec("L3MON4D3/LuaSnip"), -- Snippets engine
+         get_spec("saadparwaiz1/cmp_luasnip"), -- Snippets integration
          --- Fuzzy finding ---
          get_spec("nvim-telescope/telescope.nvim", { as = "telescope", requires = "plenary" }), -- Fuzzy finder
          get_spec("nvim-telescope/telescope-fzy-native.nvim"), -- Native FZY sorter
