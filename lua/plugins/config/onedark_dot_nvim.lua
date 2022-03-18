@@ -1,6 +1,23 @@
-require("onedark").setup {
-   keywordStyle = "none", -- Use no style for keywords
-   darkSidebar = true, -- Darken background for sidebars
-   darkFloat = true, -- Darken background for floating windows
+local onedark = require("onedark")
+
+onedark.setup {
+   style = "dark",
+   toggle_style_key = "<Leader>st",
+   code_style = {
+      comments = "italic",
+      keywords = "bold",
+      functions = "none",
+      strings = "none",
+      variables = "none",
+   },
+   highlights = {
+      TSKeywordFunction = { fmt = "bold" },
+   },
+   diagnostics = {
+      darker = true,
+      undercurl = true,
+      background = true,
+   },
 }
-vim.cmd("color onedark") -- Change the theme
+
+onedark.load()

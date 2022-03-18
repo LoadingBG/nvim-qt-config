@@ -68,7 +68,7 @@ return require("packer").startup {
          ----- Cosmetics -----
 
          --- Themes ---
-         get_spec("monsonjeremy/onedark.nvim", { as = "theme" }), -- Atom One Dark theme
+         get_spec("navarasu/onedark.nvim", { as = "theme" }), -- Atom One Dark theme
          --- Highlighting ---
          get_spec("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" }), -- Highlighter
          get_spec("norcalli/nvim-colorizer.lua", { run = ":ColorizerToggle" }), -- Color code colorizer

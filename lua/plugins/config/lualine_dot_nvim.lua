@@ -45,13 +45,14 @@ local mode_config = {
    ["nt"]     = { name = "nt",    display = "TERMINAL  NORMAL",                  bg = "#e5c07b" },
 }
 
-for _, v in pairs(mode_config) do
-   vim.cmd(string.format("hi LualineModeColor%s gui=bold,none guifg='#282c34' guibg='%s'", v.name, v.bg))
-end
+--for _, v in pairs(mode_config) do
+--   vim.cmd(string.format("hi LualineModeColor%s gui=bold,none guifg='#282c34' guibg='%s'", v.name, v.bg))
+--end
 
 local function get_mode()
-   local props = mode_config[vim.fn.mode()]
-   return string.format("%%#LualineModeColor%s#%s", props.name, props.display)
+   --local props = mode_config[vim.fn.mode()]
+   --return string.format("%%#LualineModeColor%s#%s", props.name, props.display)
+   return mode_config[vim.fn.mode()].display
 end
 
 local function named_definition(symbol, name_group)
@@ -201,9 +202,9 @@ lualine.setup {
       lualine_y = { "branch", "diff", "encoding", "fileformat", "filetype" },
       lualine_z = { "location", "progress" },
    },
-   options = {
-      theme = dofile(vim.fn.stdpath("data") .. "/site/pack/packer/opt/lualine.nvim/lua/lualine/themes/onedark.lua")
-   },
+   --options = {
+   --   theme = dofile(vim.fn.stdpath("data") .. "/site/pack/packer/opt/lualine.nvim/lua/lualine/themes/onedark.lua")
+   --},
    -- TODO: see how extensions work and add one for help
    extensions = {
       "nvim-tree",
